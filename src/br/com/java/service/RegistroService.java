@@ -44,4 +44,19 @@ public interface RegistroService {
         registro.setVaga(vaga.getPosicao());
         registros.add(registro);
     }
+    public static Integer buscarVeiculo(String placa, Vaga[] vagas) {
+        Veiculo veiculo;
+        Integer posicao = 51;
+
+        for(int index = 0; index <= 49; index++) {
+            veiculo = vagas[index].getVeiculo();
+
+           if (vagas[index].getOcupado()) {
+                if (veiculo.getPlaca().compareToIgnoreCase(placa) == 0) {
+                    posicao = index;
+                }
+            }
+        }
+        return posicao;
+    }
 }

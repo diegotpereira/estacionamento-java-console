@@ -52,6 +52,9 @@ public interface Menu {
             case 2:
                 retirarVeiculo(vagas, teclado, registros);
             break;
+
+            case 5:
+                buscarVeiculo(vagas, teclado);
         
             case 6:
             System.out.println(RegistroService.retornarRegistros(registros));
@@ -111,5 +114,17 @@ public interface Menu {
             } while(!horaValida);
         }
 
+    }
+    public static void buscarVeiculo (Vaga[] vagas, Scanner teclado) {
+        System.out.println("Digite a placa");
+        String placa = teclado.next();
+
+        Integer posicao = RegistroService.buscarVeiculo(placa, vagas);
+
+        if (posicao != 51) {
+            System.out.println("\n Carro de placa: " + placa + ", está na vaga: " + (posicao + 1) + "\n");
+        } else {
+            System.out.println("\n ESte carro não foi encontrado. |n");
+        }
     }
 }
